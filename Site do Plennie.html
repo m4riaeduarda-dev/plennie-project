@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+    <title>Plennie · transforme sonhos em realidade</title>
+    <!-- Fonte principal: Quicksand -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Quicksand', 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: #FAFAFA;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #2d3e2d;
+            transition: background-color 0.2s ease;
+        }
+
+        .top-header {
+            background-color: #A7E9AF;
+            padding: 1rem 1.5rem;
+            border-bottom-left-radius: 36px;
+            border-bottom-right-radius: 36px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
+        }
+
+        .header-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            background: rgba(255,255,240,0.9);
+            padding: 0.3rem 1.2rem;
+            border-radius: 60px;
+            color: #2b5e2b;
+            border: 2px solid white;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .logo i { font-size: 1.8rem; color: #3c8c3c; }
+
+        .tagline {
+            font-size: 0.9rem;
+            background: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            color: #3c6e3c;
+        }
+
+        .user-badge {
+            display: flex;
+            gap: 12px;
+            background: #ffffffc9;
+            padding: 0.4rem 1rem 0.4rem 1.5rem;
+            border-radius: 50px;
+            align-items: center;
+            flex-wrap: wrap;
+            backdrop-filter: blur(2px);
+            font-weight: 600;
+            border: 1px solid #ccf0d1;
+        }
+
+        .user-code {
+            background: #2b5e2b;
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .copy-btn {
+            background: none;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 30px;
+        }
+        .copy-btn:hover { background: #e6ffe6; }
+
+        .footer {
+            background-color: #EEF9BF;
+            padding: 1rem 2rem;
+            border-top-left-radius: 40px;
+            border-top-right-radius: 40px;
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #4e6b3a;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .main-container {
+            max-width: 1300px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            width: 100%;
+            flex: 1;
+        }
+
+        .tab-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid #E0F0D0;
+            padding-bottom: 0;
+        }
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 0.8rem 1.6rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 40px 40px 0 0;
+            color: #4f764f;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .tab-btn i { font-size: 1.3rem; }
+        .tab-btn.active {
+            background: white;
+            color: #2b5e2b;
+            border-bottom: 4px solid #F9D56E;
+        }
+        .tab-btn:hover:not(.active) { background: #f0fae8; }
+
+        .tab-panel {
+            display: none;
+            animation: fadeSlide 0.25s ease;
+        }
+        .tab-panel.active-panel { display: block; }
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card-flutuante {
+            background: white;
+            border-radius: 36px;
+            padding: 1.8rem;
+            box-shadow: 0 20px 30px -12px rgba(100, 120, 80, 0.15);
+            border: 1px solid #eaffdd;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-bottom: 1.8rem;
+        }
+        .card-flutuante:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 28px 32px -16px #b9daae;
+        }
+        .card-title {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #3a6e3a;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 2px dashed #d2f0c2;
+            padding-bottom: 0.6rem;
+            margin-bottom: 1.2rem;
+        }
+        .card-title i {
+            background: #FBF0C2;
+            padding: 0.5rem;
+            border-radius: 30px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 1rem 0;
+        }
+        .input-group input, .input-group textarea, .input-group select {
+            flex: 1;
+            padding: 12px 18px;
+            border-radius: 60px;
+            border: 2px solid #e2f0d4;
+            background: #fffdf7;
+            font-size: 0.9rem;
+            outline: none;
+        }
+        .input-group input:focus, .input-group textarea:focus {
+            border-color: #F9D56E;
+            box-shadow: 0 0 0 3px #fff0cd;
+        }
+        .btn {
+            background: #F3FFEA;
+            border: 1px solid #cde2bc;
+            padding: 10px 22px;
+            border-radius: 60px;
+            font-weight: 600;
+            color: #2b5e2b;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            transition: 0.1s;
+        }
+        .btn-primary {
+            background: #A7E9AF;
+            border: 1px solid white;
+            color: #1d471d;
+        }
+        .btn-primary:hover { background: #baf5c2; transform: scale(0.97); }
+        .btn:hover { background: #faf0c8; }
+
+        .item-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        .item-list li {
+            background: #fafff5;
+            margin-bottom: 12px;
+            padding: 12px 18px;
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-left: 10px solid #cbe5bc;
+            flex-wrap: wrap;
+        }
+        .mini-badge {
+            background: #EFF9E3;
+            padding: 5px 14px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .vaquinha-bar {
+            background: #eaf3df;
+            border-radius: 30px;
+            height: 18px;
+            overflow: hidden;
+            margin: 8px 0;
+        }
+        .vaquinha-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #9bda8c, #6bc06b);
+            border-radius: 30px;
+            width: 0%;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .dica-motivacional {
+            background: #FFFAE6;
+            border-radius: 28px;
+            padding: 0.9rem 1.8rem;
+            border-left: 8px solid #FDD0F2;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+            color: #4f5a45;
+        }
+        .vinculo-box {
+            background: #F3FDEB;
+            border-radius: 48px;
+            padding: 1rem 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .user-code-large {
+            background: #e4ffe4;
+            border-radius: 60px;
+            padding: 0.5rem 1.8rem;
+            font-weight: 800;
+            font-size: 1.6rem;
+            letter-spacing: 2px;
+            color: #1d4f1d;
+            border: 2px dashed #9edf9e;
+        }
+        .form-section {
+            background: #F9FFF5;
+            border-radius: 28px;
+            padding: 1.2rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        .month-nav { display: flex; gap: 12px; align-items: center; }
+        .month-nav button {
+            background: #eef5e6;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            font-weight: 700;
+            color: #618a53;
+            margin-bottom: 8px;
+        }
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 6px;
+            margin-bottom: 1.5rem;
+        }
+        .cal-day {
+            background: #F9FFF2;
+            border-radius: 40px;
+            padding: 12px 6px;
+            text-align: center;
+            font-weight: 500;
+            cursor: pointer;
+            border: 1px solid #e0f0cf;
+            position: relative;
+        }
+        .cal-day:hover { background: #F9D56E; }
+        .cal-day.selected { background: #F9D56E; border: 2px solid #c4a23d; font-weight: 700; }
+        .cal-day.other-month { color: #aabf9a; background: #fafef5; }
+        .event-marker { font-size: 0.7rem; display: block; color: #e08541; }
+        @media (max-width: 600px) {
+            .cal-day { padding: 8px 2px; font-size: 0.8rem; }
+            .tab-btn { padding: 0.5rem 1rem; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body id="appBody">
+    <header class="top-header">
+        <div class="header-content">
+            <div class="logo-area">
+                <div class="logo"><i class="fas fa-frog"></i> plennie</div>
+                <div class="tagline">✨ transforme sonhos em realidade ✨</div>
+            </div>
+            <div class="user-badge">
+                <span><i class="fas fa-link"></i> seu código:</span>
+                <span class="user-code" id="userCodeDisplay">PLN7X2K9</span>
+                <button class="copy-btn" id="copyMainCodeBtn"><i class="far fa-copy"></i></button>
+                <span><i class="fas fa-user-circle"></i> conta</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <div class="dica-motivacional">
+            <i class="fas fa-star"></i> <strong>Transformar sonhos em realidade através da organização do dinheiro.</strong> 
+            Conecte desejos e eventos às suas finanças e veja quanto precisa guardar por mês!
+        </div>
+
+        <div class="tab-bar">
+            <button class="tab-btn active" data-tab="financeiro"><i class="fas fa-coins"></i> Financeiro</button>
+            <button class="tab-btn" data-tab="desejos"><i class="fas fa-star"></i> Lista de Desejos</button>
+            <button class="tab-btn" data-tab="vaquinha"><i class="fas fa-hand-holding-heart"></i> Vaquinha</button>
+            <button class="tab-btn" data-tab="calendario"><i class="fas fa-calendar-alt"></i> Agenda</button>
+            <button class="tab-btn" data-tab="config"><i class="fas fa-sliders-h"></i> Conexões</button>
+        </div>
+
+        <!-- FINANCEIRO (base para cálculos) -->
+        <div class="tab-panel active-panel" id="panelFinanceiro">
+            <div class="card-flutuante">
+                <div class="card-title"><i class="fas fa-chart-line"></i> Organização Financeira</div>
+                <div class="form-section">
+                    <h3><i class="fas fa-money-bill-wave"></i> Renda mensal</h3>
+                    <div class="input-group">
+                        <input type="number" id="rendaMensal" placeholder="R$ 0,00" value="4850">
+                        <button class="btn" id="salvarRendaBtn">Salvar renda</button>
+                    </div>
+                </div>
+                <div class="form-section">
+                    <h3><i class="fas fa-sync-alt"></i> Despesas mensais recorrentes</h3>
+                    <div class="input-group">
+                        <input type="text" id="despesaRecorrenteNome" placeholder="Ex: Aluguel, Internet">
+                        <input type="number" id="despesaRecorrenteValor" placeholder="Valor R$">
+                        <button class="btn btn-primary" id="addDespesaRecorrente">+ adicionar</button>
+                    </div>
+                    <ul class="item-list" id="listaDespesasRecorrentes"></ul>
+                </div>
+                <div class="form-section">
+                    <h3><i class="fas fa-file-invoice-dollar"></i> Dívidas / parcelas</h3>
+                    <div class="input-group">
+                        <input type="text" id="dividaNome" placeholder="Descrição">
+                        <input type="number" id="dividaValor" placeholder="Valor total">
+                        <input type="number" id="dividaParcelas" placeholder="Nº parcelas">
+                        <button class="btn btn-primary" id="addDividaBtn">+ adicionar</button>
+                    </div>
+                    <ul class="item-list" id="listaDividas"></ul>
+                </div>
+                <div class="form-section">
+                    <h3><i class="fas fa-random"></i> Gastos avulsos</h3>
+                    <div class="input-group">
+                        <input type="text" id="gastoAvulsoNome" placeholder="Descrição">
+                        <input type="number" id="gastoAvulsoValor" placeholder="Valor">
+                        <button class="btn" id="addGastoAvulsoBtn">+ adicionar</button>
+                    </div>
+                    <ul class="item-list" id="listaGastosAvulsos"></ul>
+                </div>
+                <div class="form-section" style="background:#EFF9E3;">
+                    <h3><i class="fas fa-calculator"></i> Resumo mensal</h3>
+                    <div id="resumoFinanceiro"></div>
+                    <button class="btn btn-primary" id="atualizarResumoBtn">Atualizar resumo</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- LISTA DE DESEJOS com estrela e link de venda -->
+        <div class="tab-panel" id="panelDesejos">
+            <div class="card-flutuante">
+                <div class="card-title"><i class="fas fa-star"></i> Lista de Desejos</div>
+                <p><i class="fas fa-link"></i> Adicione seus sonhos com link de venda online. A plataforma calcula quanto guardar por mês!</p>
+                <div class="input-group">
+                    <input type="text" id="desejoNome" placeholder="Nome do desejo (ex: iPhone, apartamento)">
+                    <input type="number" id="desejoValor" placeholder="Valor R$">
+                    <input type="text" id="desejoLink" placeholder="Link da venda online (opcional)">
+                    <button class="btn btn-primary" id="addDesejoBtn"><i class="fas fa-star"></i> Adicionar desejo</button>
+                </div>
+                <ul class="item-list" id="listaDesejos"></ul>
+                <div id="totalDesejosMensal" style="margin-top: 1rem; background:#FBF0C2; border-radius: 28px; padding: 1rem; text-align: center;"></div>
+            </div>
+        </div>
+
+        <!-- VAQUINHA (individual/grupo) -->
+        <div class="tab-panel" id="panelVaquinha">
+            <div class="card-flutuante">
+                <div class="card-title"><i class="fas fa-piggy-bank"></i> Vaquinha Coletiva</div>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                    <button class="btn" id="modoIndividualBtn"><i class="fas fa-user"></i> Individual</button>
+                    <button class="btn btn-primary" id="modoColetivoBtn"><i class="fas fa-users"></i> Coletiva</button>
+                </div>
+                <div><strong>🎯 Meta:</strong> <span id="metaVaquinha">R$ 3.000</span></div>
+                <div class="input-group">
+                    <input type="number" id="valorDepositoVaquinha" placeholder="Valor para guardar R$">
+                    <button id="depositarVaquinhaBtn" class="btn btn-primary">Guardar</button>
+                    <button id="editarMetaBtn" class="btn">Definir meta</button>
+                </div>
+                <div class="vaquinha-bar"><div class="vaquinha-fill" id="vaquinhaFill"></div></div>
+                <div><span id="valorAcumulado">R$ 0</span> de <span id="metaTotalTexto">R$ 3.000</span></div>
+                <div id="participantesColetiva" style="margin-top: 1rem; background:#F3FDEB; border-radius: 32px; padding: 0.8rem; display: none;">
+                    <i class="fas fa-users"></i> <strong>Participantes vinculados:</strong> PLN4D9Q, PLN8C3M
+                </div>
+            </div>
+        </div>
+
+        <!-- AGENDA com eventos financeiros e cálculo de economia -->
+        <div class="tab-panel" id="panelCalendario">
+            <div class="card-flutuante">
+                <div class="card-title"><i class="fas fa-calendar-alt"></i> Agenda Financeira</div>
+                <p><i class="fas fa-gift"></i> Programe eventos (casamento, aniversário, chá de bebê) e veja quanto economizar por mês!</p>
+                <div class="calendar-header">
+                    <div class="month-nav">
+                        <button id="prevMonthBtn"><i class="fas fa-chevron-left"></i></button>
+                        <span id="currentMonthYear" style="font-weight:700; font-size:1.3rem;">Março 2025</span>
+                        <button id="nextMonthBtn"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="weekdays"><span>D</span><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span></div>
+                <div id="calendarGrid" class="calendar-grid"></div>
+                
+                <div style="margin-top: 1rem;">
+                    <h4><i class="fas fa-calendar-plus"></i> Adicionar evento financeiro</h4>
+                    <div class="input-group">
+                        <input type="text" id="eventoNome" placeholder="Ex: Casamento da Ana, Aniversário João">
+                        <input type="number" id="eventoValor" placeholder="Valor estimado R$">
+                        <input type="text" id="eventoData" placeholder="Data (DD/MM/AAAA)">
+                        <button id="addEventoBtn" class="btn btn-primary">+ Programar evento</button>
+                    </div>
+                    <h4 style="margin-top: 1rem;"><i class="fas fa-list-ul"></i> Eventos programados</h4>
+                    <ul class="item-list" id="eventosLista"></ul>
+                    <div id="economiaMensalEventos" style="margin-top: 1rem; background:#EFF9E3; border-radius: 28px; padding: 1rem;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONEXÕES -->
+        <div class="tab-panel" id="panelConfig">
+            <div class="card-flutuante">
+                <div class="card-title"><i class="fas fa-plug"></i> Conexões & Personalização</div>
+                <div style="display:flex; flex-wrap:wrap; gap:1.5rem;">
+                    <div style="flex:2">
+                        <h3><i class="fas fa-at"></i> Vincular contas</h3>
+                        <div style="display:flex; gap:12px; flex-wrap:wrap; margin:12px 0;">
+                            <button class="btn"><i class="fab fa-google"></i> Google</button>
+                            <button class="btn"><i class="fab fa-apple"></i> Apple ID</button>
+                            <button class="btn"><i class="fab fa-instagram"></i> Instagram</button>
+                            <button class="btn btn-primary">+ Conectar e-mail</button>
+                        </div>
+                        <div class="vinculo-box">
+                            <span><i class="fas fa-code-branch"></i> Código PLN:</span>
+                            <input type="text" id="codigoVinculo" placeholder="PLNXXXXX" style="flex:1; border-radius:60px; padding:10px;">
+                            <button id="vincularUsuarioBtn" class="btn-primary btn">Vincular</button>
+                        </div>
+                        <hr style="margin: 1.5rem 0;">
+                        <h3><i class="fas fa-palette"></i> Personalizar cor de fundo</h3>
+                        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                            <div style="width: 50px; height: 50px; background-color: #FAFAFA; border-radius: 50%; border: 3px solid #ccc; cursor: pointer;" data-color="#FAFAFA"></div>
+                            <div style="width: 50px; height: 50px; background-color: #FFF7E8; border-radius: 50%; cursor: pointer;" data-color="#FFF7E8"></div>
+                            <div style="width: 50px; height: 50px; background-color: #E6F3E6; border-radius: 50%; cursor: pointer;" data-color="#E6F3E6"></div>
+                            <div style="width: 50px; height: 50px; background-color: #FFEFD5; border-radius: 50%; cursor: pointer;" data-color="#FFEFD5"></div>
+                        </div>
+                        <div class="input-group" style="margin-top: 12px;">
+                            <input type="color" id="customColorPicker" value="#FAFAFA">
+                            <button id="applyCustomColorBtn" class="btn">Aplicar</button>
+                        </div>
+                    </div>
+                    <div style="flex:1; background:#F7FFF0; border-radius:48px; padding:1.2rem; text-align:center;">
+                        <div><i class="fas fa-key"></i> Seu código único</div>
+                        <div class="user-code-large" id="userCodeConfig">PLN7X2K9</div>
+                        <button class="copy-btn" id="copyConfigCodeBtn"><i class="far fa-copy"></i> copiar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <span><i class="fas fa-frog"></i> plennie · organize seu dinheiro, realize seus sonhos</span>
+            <span>💚 transformando sonhos em realidade</span>
+        </div>
+    </footer>
+
+    <script>
+        (function(){
+            const userCode = "PLN7X2K9";
+            document.querySelectorAll('#userCodeDisplay, #userCodeConfig').forEach(el => el.innerText = userCode);
+            function copyCode(text) { navigator.clipboard?.writeText(text); alert('Código PLN copiado!'); }
+            document.getElementById('copyMainCodeBtn')?.addEventListener('click', () => copyCode(userCode));
+            document.getElementById('copyConfigCodeBtn')?.addEventListener('click', () => copyCode(userCode));
+
+            // Abas
+            const tabs = document.querySelectorAll('.tab-btn');
+            const panels = {
+                financeiro: document.getElementById('panelFinanceiro'),
+                desejos: document.getElementById('panelDesejos'),
+                vaquinha: document.getElementById('panelVaquinha'),
+                calendario: document.getElementById('panelCalendario'),
+                config: document.getElementById('panelConfig')
+            };
+            function activateTab(tabId) {
+                Object.values(panels).forEach(p => p?.classList.remove('active-panel'));
+                tabs.forEach(t => t.classList.remove('active'));
+                if(panels[tabId]) panels[tabId].classList.add('active-panel');
+                const activeBtn = Array.from(tabs).find(t => t.dataset.tab === tabId);
+                if(activeBtn) activeBtn.classList.add('active');
+            }
+            tabs.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const target = btn.dataset.tab;
+                    if(target === 'financeiro') activateTab('financeiro');
+                    else if(target === 'desejos') activateTab('desejos');
+                    else if(target === 'vaquinha') activateTab('vaquinha');
+                    else if(target === 'calendario') activateTab('calendario');
+                    else if(target === 'config') activateTab('config');
+                });
+            });
+
+            // Dados financeiros
+            let renda = 4850;
+            let despesasRecorrentes = [{nome:"Aluguel", valor:1200},{nome:"Internet", valor:150},{nome:"Alimentação", valor:800}];
+            let dividas = [{nome:"Cartão de crédito", valorTotal:980, parcelasRestantes:2, parcelaMensal:490},{nome:"Financiamento carro", valorTotal:5200, parcelasRestantes:8, parcelaMensal:650}];
+            let gastosAvulsos = [{nome:"Aniversário amiga", valor:120},{nome:"Manutenção carro", valor:350}];
+            
+            function getSaldoLivreMensal() {
+                const totalRec = despesasRecorrentes.reduce((s,d)=>s+d.valor,0);
+                const totalParc = dividas.reduce((s,d)=>s+d.parcelaMensal,0);
+                const totalAvulso = gastosAvulsos.reduce((s,g)=>s+g.valor,0);
+                return renda - totalRec - totalParc - totalAvulso;
+            }
+
+            function atualizarResumoUI() {
+                const totalRec = despesasRecorrentes.reduce((s,d)=>s+d.valor,0);
+                const totalParc = dividas.reduce((s,d)=>s+d.parcelaMensal,0);
+                const totalAvulso = gastosAvulsos.reduce((s,g)=>s+g.valor,0);
+                const saldoLivre = getSaldoLivreMensal();
+                const resumoDiv = document.getElementById('resumoFinanceiro');
+                if(resumoDiv) resumoDiv.innerHTML = `
+                    <p><strong>Renda:</strong> R$ ${renda.toFixed(2)}</p>
+                    <p><strong>Despesas recorrentes:</strong> R$ ${totalRec.toFixed(2)}</p>
+                    <p><strong>Parcelas mensais:</strong> R$ ${totalParc.toFixed(2)}</p>
+                    <p><strong>Gastos avulsos:</strong> R$ ${totalAvulso.toFixed(2)}</p>
+                    <p><strong>Saldo livre mensal:</strong> R$ ${saldoLivre.toFixed(2)}</p>
+                `;
+                const listaRec = document.getElementById('listaDespesasRecorrentes');
+                if(listaRec) listaRec.innerHTML = despesasRecorrentes.map(d=>`<li><i class="fas fa-receipt"></i> ${d.nome} - R$ ${d.valor}<span class="mini-badge">recorrente</span></li>`).join('');
+                const listaDividasUI = document.getElementById('listaDividas');
+                if(listaDividasUI) listaDividasUI.innerHTML = dividas.map(d=>`<li><i class="fas fa-file-invoice"></i> ${d.nome} - R$ ${d.valorTotal} (${d.parcelasRestantes}x) parcela R$ ${d.parcelaMensal}<span class="mini-badge">parcelado</span></li>`).join('');
+                const listaAvulsos = document.getElementById('listaGastosAvulsos');
+                if(listaAvulsos) listaAvulsos.innerHTML = gastosAvulsos.map(g=>`<li><i class="fas fa-tag"></i> ${g.nome} - R$ ${g.valor}</li>`).join('');
+                atualizarCalculosDesejos();
+                atualizarEconomiaEventos();
+            }
+            
+            document.getElementById('salvarRendaBtn')?.addEventListener('click',()=>{ let v=parseFloat(document.getElementById('rendaMensal').value); if(!isNaN(v)) renda=v; atualizarResumoUI(); });
+            document.getElementById('addDespesaRecorrente')?.addEventListener('click',()=>{ let nome=document.getElementById('despesaRecorrenteNome').value.trim(), valor=parseFloat(document.getElementById('despesaRecorrenteValor').value); if(nome&&!isNaN(valor)){ despesasRecorrentes.push({nome,valor}); atualizarResumoUI(); document.getElementById('despesaRecorrenteNome').value=''; document.getElementById('despesaRecorrenteValor').value=''; } });
+            document.getElementById('addDividaBtn')?.addEventListener('click',()=>{ let nome=document.getElementById('dividaNome').value.trim(), valTot=parseFloat(document.getElementById('dividaValor').value), parcelas=parseInt(document.getElementById('dividaParcelas').value); if(nome&&!isNaN(valTot)&&!isNaN(parcelas)&&parcelas>0){ let parcelaMensal=valTot/parcelas; dividas.push({nome, valorTotal:valTot, parcelasRestantes:parcelas, parcelaMensal}); atualizarResumoUI(); document.getElementById('dividaNome').value=''; document.getElementById('dividaValor').value=''; document.getElementById('dividaParcelas').value=''; } });
+            document.getElementById('addGastoAvulsoBtn')?.addEventListener('click',()=>{ let nome=document.getElementById('gastoAvulsoNome').value.trim(), valor=parseFloat(document.getElementById('gastoAvulsoValor').value); if(nome&&!isNaN(valor)){ gastosAvulsos.push({nome,valor}); atualizarResumoUI(); document.getElementById('gastoAvulsoNome').value=''; document.getElementById('gastoAvulsoValor').value=''; } });
+            document.getElementById('atualizarResumoBtn')?.addEventListener('click',()=>atualizarResumoUI());
+            
+            // DESEJOS com cálculo mensal
+            let desejos = [];
+            function atualizarCalculosDesejos() {
+                const saldoLivre = getSaldoLivreMensal();
+                const listaDiv = document.getElementById('listaDesejos');
+                if(listaDiv) {
+                    listaDiv.innerHTML = desejos.map((d, idx) => {
+                        const mesesNecessarios = saldoLivre > 0 ? Math.ceil(d.valor / saldoLivre) : 'indeterminado';
+                        return `<li><i class="fas fa-star" style="color:#F9D56E;"></i> <strong>${d.nome}</strong> - R$ ${d.valor.toFixed(2)} 
+                        ${d.link ? `<a href="${d.link}" target="_blank" style="color:#6b8c42;"><i class="fas fa-external-link-alt"></i> link</a>` : ''}
+                        <span class="mini-badge">💰 ${saldoLivre > 0 ? `Economize R$ ${(d.valor / (mesesNecessarios === 'indeterminado' ? 1 : mesesNecessarios)).toFixed(2)}/mês durante ${mesesNecessarios} meses` : 'Sem saldo livre'}</span>
+                        <button class="btn" style="margin-left:auto;" onclick="removerDesejo(${idx})"><i class="fas fa-trash"></i></button></li>`;
+                    }).join('');
+                }
+                const totalMensal = desejos.reduce((acc, d) => {
+                    const meses = saldoLivre > 0 ? Math.ceil(d.valor / saldoLivre) : 1;
+                    return acc + (d.valor / meses);
+                }, 0);
+                const totalDiv = document.getElementById('totalDesejosMensal');
+                if(totalDiv) totalDiv.innerHTML = `<strong><i class="fas fa-chart-line"></i> Total necessário por mês para todos os desejos:</strong> R$ ${totalMensal.toFixed(2)} | Saldo livre: R$ ${saldoLivre.toFixed(2)}`;
+            }
+            window.removerDesejo = (idx) => { desejos.splice(idx,1); atualizarCalculosDesejos(); };
+            document.getElementById('addDesejoBtn')?.addEventListener('click',()=>{
+                let nome = document.getElementById('desejoNome').value.trim();
+                let valor = parseFloat(document.getElementById('desejoValor').value);
+                let link = document.getElementById('desejoLink').value.trim();
+                if(nome && !isNaN(valor) && valor>0){
+                    desejos.push({nome, valor, link});
+                    atualizarCalculosDesejos();
+                    document.getElementById('desejoNome').value = '';
+                    document.getElementById('desejoValor').value = '';
+                    document.getElementById('desejoLink').value = '';
+                } else alert("Preencha nome e valor válido.");
+            });
+            
+            // EVENTOS no calendário com cálculo de economia mensal
+            let eventos = []; // {nome, valor, dataStr, dataObj}
+            function calcularMesesAteData(dataEvento) {
+                const hoje = new Date();
+                const diffMeses = (dataEvento.getFullYear() - hoje.getFullYear()) * 12 + (dataEvento.getMonth() - hoje.getMonth());
+                return Math.max(1, diffMeses);
+            }
+            function atualizarEconomiaEventos() {
+                const saldoLivre = getSaldoLivreMensal();
+                const listaEventos = document.getElementById('eventosLista');
+                let html = '';
+                let necessidadeTotal = 0;
+                eventos.forEach((ev, idx) => {
+                    const meses = calcularMesesAteData(ev.dataObj);
+                    const porMes = ev.valor / meses;
+                    necessidadeTotal += porMes;
+                    html += `<li><i class="fas fa-gift"></i> <strong>${ev.nome}</strong> - R$ ${ev.valor.toFixed(2)} em ${ev.dataStr}
+                    <span class="mini-badge">📅 Economize R$ ${porMes.toFixed(2)}/mês (${meses} meses)</span>
+                    <button class="btn" style="margin-left:auto;" onclick="removerEvento(${idx})"><i class="fas fa-trash"></i></button></li>`;
+                });
+                listaEventos.innerHTML = html || '<li>Nenhum evento programado. Adicione eventos como casamento, aniversário ou chá de bebê!</li>';
+                const divEconomia = document.getElementById('economiaMensalEventos');
+                if(divEconomia) {
+                    divEconomia.innerHTML = `<strong><i class="fas fa-calculator"></i> Necessário economizar por mês para eventos:</strong> R$ ${necessidadeTotal.toFixed(2)}<br>
+                    <strong>Saldo livre mensal disponível:</strong> R$ ${saldoLivre.toFixed(2)}<br>
+                    ${necessidadeTotal > saldoLivre ? '<span style="color:#c97e2a;">⚠️ Atenção: a soma dos eventos ultrapassa seu saldo livre. Considere ajustar metas ou renda.</span>' : '✅ Você consegue! Planeje-se e realize seus sonhos.'}`;
+                }
+                renderCalendar(); // atualiza marcadores
+            }
+            window.removerEvento = (idx) => { eventos.splice(idx,1); atualizarEconomiaEventos(); };
+            document.getElementById('addEventoBtn')?.addEventListener('click',()=>{
+                let nome = document.getElementById('eventoNome').value.trim();
+                let valor = parseFloat(document.getElementById('eventoValor').value);
+                let dataStr = document.getElementById('eventoData').value.trim();
+                if(nome && !isNaN(valor) && valor>0 && dataStr){
+                    let partes = dataStr.split('/');
+                    if(partes.length===3){
+                        let dataObj = new Date(partes[2], partes[1]-1, partes[0]);
+                        if(!isNaN(dataObj.getTime())){
+                            eventos.push({nome, valor, dataStr, dataObj});
+                            atualizarEconomiaEventos();
+                            document.getElementById('eventoNome').value = '';
+                            document.getElementById('eventoValor').value = '';
+                            document.getElementById('eventoData').value = '';
+                            return;
+                        }
+                    }
+                    alert("Formato de data inválido. Use DD/MM/AAAA");
+                } else alert("Preencha nome, valor e data.");
+            });
+            
+            // CALENDÁRIO
+            let currentDate = new Date(2025, 2, 1);
+            function renderCalendar() {
+                const year = currentDate.getFullYear();
+                const month = currentDate.getMonth();
+                const firstDay = new Date(year, month, 1);
+                const lastDay = new Date(year, month+1, 0);
+                const startWeekday = firstDay.getDay();
+                const daysInMonth = lastDay.getDate();
+                const prevMonthDays = new Date(year, month, 0).getDate();
+                const calendarGrid = document.getElementById('calendarGrid');
+                if(!calendarGrid) return;
+                calendarGrid.innerHTML = '';
+                for(let i=0; i<startWeekday; i++) {
+                    let prevDay = prevMonthDays - startWeekday + i + 1;
+                    let div = document.createElement('div'); div.className = 'cal-day other-month'; div.innerText = prevDay;
+                    calendarGrid.appendChild(div);
+                }
+                for(let d=1; d<=daysInMonth; d++) {
+                    let div = document.createElement('div'); div.className = 'cal-day'; div.innerText = d;
+                    const key = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+                    const temEvento = eventos.some(ev => {
+                        return ev.dataObj.getFullYear()===year && ev.dataObj.getMonth()===month && ev.dataObj.getDate()===d;
+                    });
+                    if(temEvento){
+                        let marker = document.createElement('span'); marker.className = 'event-marker'; marker.innerHTML = '🎁';
+                        div.appendChild(marker);
+                    }
+                    calendarGrid.appendChild(div);
+                }
+                const totalCells = startWeekday + daysInMonth;
+                const remaining = 42 - totalCells;
+                for(let i=1; i<=remaining; i++) {
+                    let div = document.createElement('div'); div.className = 'cal-day other-month'; div.innerText = i;
+                    calendarGrid.appendChild(div);
+                }
+                const monthNames = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+                document.getElementById('currentMonthYear').innerText = `${monthNames[month]} ${year}`;
+            }
+            document.getElementById('prevMonthBtn')?.addEventListener('click', () => { currentDate.setMonth(currentDate.getMonth()-1); renderCalendar(); });
+            document.getElementById('nextMonthBtn')?.addEventListener('click', () => { currentDate.setMonth(currentDate.getMonth()+1); renderCalendar(); });
+            
+            // Vaquinha
+            let vaquinhaAtual=0, metaVaquinha=3000, modoColetivo=false;
+            function atualizarVaquinhaUI(){ let pct=(vaquinhaAtual/metaVaquinha)*100; let fill=document.getElementById('vaquinhaFill'); if(fill) fill.style.width=Math.min(pct,100)+'%'; document.getElementById('valorAcumulado').innerText=`R$ ${vaquinhaAtual.toFixed(2)}`; document.getElementById('metaTotalTexto').innerText=`R$ ${metaVaquinha.toFixed(2)}`; document.getElementById('metaVaquinha').innerText=`R$ ${metaVaquinha.toFixed(2)}`; }
+            document.getElementById('depositarVaquinhaBtn')?.addEventListener('click',()=>{ let v=parseFloat(document.getElementById('valorDepositoVaquinha').value); if(!isNaN(v)&&v>0){ vaquinhaAtual+=v; atualizarVaquinhaUI(); document.getElementById('valorDepositoVaquinha').value=''; } });
+            document.getElementById('editarMetaBtn')?.addEventListener('click',()=>{ let nova=prompt("Nova meta (R$):",metaVaquinha); if(nova&&!isNaN(parseFloat(nova))){ metaVaquinha=parseFloat(nova); atualizarVaquinhaUI(); } });
+            document.getElementById('modoIndividualBtn')?.addEventListener('click',()=>{ modoColetivo=false; document.getElementById('participantesColetiva').style.display='none'; });
+            document.getElementById('modoColetivoBtn')?.addEventListener('click',()=>{ modoColetivo=true; document.getElementById('participantesColetiva').style.display='block'; });
+            atualizarVaquinhaUI();
+            
+            // Conexões
+            document.getElementById('vincularUsuarioBtn')?.addEventListener('click',()=>{ let code=document.getElementById('codigoVinculo').value.trim().toUpperCase(); if(code.startsWith('PLN')&&code.length>=6){ alert(`✅ ${code} vinculado! Agora vocês podem fazer vaquinhas coletivas.`); let div=document.getElementById('participantesColetiva'); if(div) div.innerHTML=`<i class="fas fa-users"></i> <strong>Participantes vinculados:</strong> ${code}, PLN4D9Q, PLN8C3M`; document.getElementById('codigoVinculo').value=''; } else alert("Código inválido. Use PLN..."); });
+            
+            // Personalização de cor
+            const bodyEl = document.getElementById('appBody');
+            document.querySelectorAll('[data-color]').forEach(circle => { circle.addEventListener('click', () => { bodyEl.style.backgroundColor = circle.getAttribute('data-color'); }); });
+            document.getElementById('applyCustomColorBtn')?.addEventListener('click', () => { bodyEl.style.backgroundColor = document.getElementById('customColorPicker').value; });
+            
+            atualizarResumoUI();
+            renderCalendar();
+            atualizarEconomiaEventos();
+        })();
+    </script>
+</body>
+</html>
